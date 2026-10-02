@@ -1,5 +1,6 @@
 package com.web2.lab1.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,6 +24,7 @@ public class Locacao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Schema(accessMode = Schema.AccessMode.READ_ONLY, example = "1", description = "Gerado automaticamente")
     private Integer id;
 
     @NotNull(message = "O imóvel é obrigatório")
