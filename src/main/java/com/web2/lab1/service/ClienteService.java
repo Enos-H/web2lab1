@@ -1,0 +1,47 @@
+package com.web2.lab1.service;
+
+import com.web2.lab1.model.Cliente;
+import com.web2.lab1.repository.ClienteRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class ClienteService {
+
+    private final ClienteRepository repository;
+
+    @Autowired
+    public ClienteService(ClienteRepository clienteRepository) {
+        this.repository = clienteRepository;
+    }
+
+    public List<Cliente> todos() {
+        return repository.findAll();
+    }
+
+    public Optional<Cliente> buscaPor(Integer id) {
+        return repository.findById(id);
+    }
+
+    public List<Cliente> buscaPor(String nome) {
+        return repository.findByNomeClienteContaining(nome);
+    }
+
+    @Transactional
+    public Cliente salva(Cliente cliente) {
+        return repository.save(cliente);
+    }
+
+    @Transactional
+    public void removePelo(Integer id) {
+        repository.deleteById(id);
+    }
+
+    public boolean naoExisteClienteCom(Integer id) {
+        return !repository.existsById(id);
+    }
+}

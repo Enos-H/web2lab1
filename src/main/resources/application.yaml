@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: lab1
+
+  datasource:
+    url: jdbc:postgresql://localhost:5433/lab1
+    username: lab1
+    password: lab1
+
+  jpa:
+    show-sql: true
+    open-in-view: false
